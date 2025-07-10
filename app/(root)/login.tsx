@@ -6,8 +6,8 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Headphones } from '../components/MusicIcons';
-import { commonStyles } from '../styles/commonStyles';
+import { Headphones } from '@/components/MusicIcons';
+import { commonStyles } from '@/styles/commonStyles';
 
 interface LoginScreenProps {
   onNavigateBack: () => void;

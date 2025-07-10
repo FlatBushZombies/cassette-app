@@ -5,12 +5,15 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import { Link } from 'expo-router'
 import { LinearGradient } from 'expo-linear-gradient';
 import SpinningMusicCircle from '@/components/SpinningMusicCircle';
 import { commonStyles } from '@/styles/commonStyles';
 
 interface WelcomeScreenProps {
-  onNavigateToLogin: () => void;
+  onNavigateToLogin: () => {
+
+  };
 }
 
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onNavigateToLogin }) => {
@@ -42,7 +45,9 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onNavigateToLogin }) => {
             end={{ x: 1, y: 1 }}
             style={commonStyles.gradientButton}
           >
+            <Link  href='/login'>
             <Text style={commonStyles.buttonText}>Get Started</Text>
+            </Link>
           </LinearGradient>
         </TouchableOpacity>
       </View>
