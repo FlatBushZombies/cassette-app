@@ -1,46 +1,61 @@
-export  const LoginScreen = () => (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#000000" />
-  
+import React from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Headphones } from '../components/MusicIcons';
+import { commonStyles } from '../styles/commonStyles';
+
+interface LoginScreenProps {
+  onNavigateBack: () => void;
+}
+
+const LoginScreen: React.FC<LoginScreenProps> = ({ onNavigateBack }) => {
+  return (
+    <SafeAreaView style={commonStyles.container}>
+     
 
       {/* Log in text */}
-      <View style={styles.loginHeader}>
-        <TouchableOpacity onPress={() => setCurrentScreen('welcome')}>
-          <Text style={styles.loginText}>log in</Text>
+      <View style={commonStyles.loginHeader}>
+        <TouchableOpacity onPress={onNavigateBack}>
+          <Text style={commonStyles.loginText}>log in</Text>
         </TouchableOpacity>
       </View>
 
       {/* Main Content */}
-      <View style={styles.content}>
-        <View style={styles.illustrationContainer}>
+      <View style={commonStyles.content}>
+        <View style={commonStyles.illustrationContainer}>
           <Headphones />
         </View>
 
-        <View style={styles.loginButtonsContainer}>
-          <TouchableOpacity style={styles.buttonContainer}>
+        <View style={commonStyles.loginButtonsContainer}>
+          <TouchableOpacity style={commonStyles.buttonContainer}>
             <LinearGradient
               colors={['#8B5CF6', '#A855F7', '#C084FC']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
-              style={styles.gradientButton}
+              style={commonStyles.gradientButton}
             >
-              <View style={styles.buttonContent}>
-                <Text style={styles.musicIcon}>🎵</Text>
-                <Text style={styles.buttonText}>Continue with Apple Music</Text>
+              <View style={commonStyles.buttonContent}>
+                <Text style={commonStyles.musicIcon}>🎵</Text>
+                <Text style={commonStyles.buttonText}>Continue with Apple Music</Text>
               </View>
             </LinearGradient>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.buttonContainer}>
+          <TouchableOpacity style={commonStyles.buttonContainer}>
             <LinearGradient
               colors={['#8B5CF6', '#A855F7', '#C084FC']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
-              style={styles.gradientButton}
+              style={commonStyles.gradientButton}
             >
-              <View style={styles.buttonContent}>
-                <Text style={styles.spotifyIcon}>🎧</Text>
-                <Text style={styles.buttonText}>Continue with Spotify</Text>
+              <View style={commonStyles.buttonContent}>
+                <Text style={commonStyles.spotifyIcon}>🎧</Text>
+                <Text style={commonStyles.buttonText}>Continue with Spotify</Text>
               </View>
             </LinearGradient>
           </TouchableOpacity>
@@ -48,6 +63,9 @@ export  const LoginScreen = () => (
       </View>
 
       {/* Home Indicator */}
-      <View style={styles.homeIndicator} />
+      <View style={commonStyles.homeIndicator} />
     </SafeAreaView>
   );
+};
+
+export default LoginScreen;
