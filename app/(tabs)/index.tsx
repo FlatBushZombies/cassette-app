@@ -9,6 +9,7 @@ import { Link } from 'expo-router'
 import { LinearGradient } from 'expo-linear-gradient';
 import SpinningMusicCircle from '@/components/SpinningMusicCircle';
 import { commonStyles } from '@/styles/commonStyles';
+import { Router } from 'expo-router';
 
 interface WelcomeScreenProps {
   onNavigateToLogin: () => {

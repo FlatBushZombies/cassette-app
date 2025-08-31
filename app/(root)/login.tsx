@@ -4,16 +4,45 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
+  Alert
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Headphones } from '@/components/MusicIcons';
 import { commonStyles } from '@/styles/commonStyles';
+import * as WebBrowser from 'expo-web-browser'
+
 
 interface LoginScreenProps {
   onNavigateBack: () => void;
 }
 
+const SPOTIFY_AUTH_ENDPOINT = 'https://cassette-tapes.onrender.com/login';
+
 const LoginScreen: React.FC<LoginScreenProps> = ({ onNavigateBack }) => {
+  const [isLoading, setIsLoading] = React.useState(false);
+
+   const handleLogin = async () => {
+    setIsLoading(true);
+    try {
+      // Open the Spotify authentication URL
+      const result = await WebBrowser.openAuthSessionAsync(
+        SPOTIFY_AUTH_ENDPOINT,
+        'https://cassette-tapes.onrender.com/callback'
+      );
+      
+      if (result.type === 'success') {
+        // If authentication was successful, navigate to dashboard
+        Alert.alert('Authentication successed')
+      } else {
+        Alert.alert('Authentication cancelled', 'You need to authenticate with Spotify to use this app.');
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Failed to connect to Spotify. Please try again.');
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <SafeAreaView style={commonStyles.container}>
      
@@ -46,7 +75,9 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ onNavigateBack }) => {
             </LinearGradient>
           </TouchableOpacity>
 
-          <TouchableOpacity style={commonStyles.buttonContainer}>
+          <TouchableOpacity style={commonStyles.buttonContainer}
+          onPress={handleLogin}
+          >
             <LinearGradient
               colors={['#8B5CF6', '#A855F7', '#C084FC']}
               start={{ x: 0, y: 0 }}
