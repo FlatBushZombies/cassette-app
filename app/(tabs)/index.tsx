@@ -28,14 +28,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onNavigateToLogin }) => {
   const isLastSlide = activeIndex === onboarding.length - 1;
   return (
     <SafeAreaView style={commonStyles.container}>
-        <TouchableOpacity
-        onPress={() => {
-          router.replace("/(root)/HomeScreen");
-        }}
-        className="w-full flex justify-end items-end p-5"
-      >
-        <Text className="text-black text-md font-JakartaBold">Skip</Text>
-      </TouchableOpacity> {/* Main Content */}
+        {/* Main Content */}
       <View style={commonStyles.content}>
         <View style={commonStyles.illustrationContainer}>
           <Swiper
