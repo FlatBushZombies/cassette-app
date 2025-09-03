@@ -29,6 +29,29 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onNavigateToLogin }) => {
   return (
     <SafeAreaView style={commonStyles.container}>
         {/* Main Content */}
+        <SafeAreaView style={commonStyles.container}>
+  <TouchableOpacity
+    onPress={() => {
+      router.replace("/(root)/HomeScreen");
+    }}
+    style={{
+      width: '100%',
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      alignItems: 'flex-end',
+      padding: 20, // equivalent to p-5
+    }}
+  >
+    <Text style={{ 
+      fontFamily: 'JakartaSans-Light', 
+      fontSize: 16, 
+      color: '#ffffffff' // adjust text color as needed
+    }}>
+      Skip
+    </Text>
+  </TouchableOpacity>
+</SafeAreaView>
+
       <View style={commonStyles.content}>
         <View style={commonStyles.illustrationContainer}>
           <Swiper
